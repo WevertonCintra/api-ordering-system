@@ -1,0 +1,52 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "license": "",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
+    "start": "node dist/shared/http/server.js",
+    "seedP": "node dist/shared/database/seed/*.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/http/server.ts",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "tcreate": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create -n",
+    "trun": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run",
+    "trevert": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli migration:revert",
+    "seed": "ts-node-dev -r tsconfig-paths/register src/shared/database/seed/*.ts"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "celebrate": "^15.0.0",
+    "class-transformer": "^0.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.6.0",
+    "typeorm": "^0.2.37",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.5",
+    "@types/uuid": "^8.3.1",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
+    "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.2"
+  }
+}
