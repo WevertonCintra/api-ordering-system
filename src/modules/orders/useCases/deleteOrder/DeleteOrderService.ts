@@ -11,13 +11,13 @@ class DeleteOrderService {
   ) {}
 
   async execute(id: string): Promise<void> {
-    const order = await this.ordersRepository.findById(id)
+    const order = await this.ordersRepository.findByOrderId(id)
 
     if (!order) {
       throw new AppError('Order does not exists!')
     }
 
-    await this.ordersRepository.deleteById(order.id)
+    await this.ordersRepository.deleteByOrderId(order.id)
   }
 }
 

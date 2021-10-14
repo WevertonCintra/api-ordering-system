@@ -11,7 +11,7 @@ class ListClientsService {
   ) {}
 
   async execute(): Promise<Client[]> {
-    const clients = await this.clientsRepository.list()
+    const clients = await this.clientsRepository.listClients()
 
     return clients
   }

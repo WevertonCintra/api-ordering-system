@@ -4,17 +4,17 @@ import { IOrdersRepository } from '@shared/database/repositories/IOrdersReposito
 import { Order } from '@shared/database/entities/Order'
 
 @injectable()
-class ListOrdersService {
+class ListOrdersByCreatedDateService {
   constructor(
     @inject('OrdersRepository')
     private ordersRepository: IOrdersRepository
   ) {}
 
   async execute(): Promise<Order[]> {
-    const orders = await this.ordersRepository.listOrders()
+    const orders = await this.ordersRepository.listOrdersByCreatedDate()
 
     return orders
   }
 }
 
-export { ListOrdersService }
+export { ListOrdersByCreatedDateService }

@@ -8,7 +8,7 @@ class Order {
   @PrimaryColumn()
   readonly id: string
 
-  @Column()
+  @Column() 
   client_id: string
 
   @ManyToOne(() => Client)
@@ -16,10 +16,19 @@ class Order {
   client: Client
 
   @Column()
+  created_date: Date
+
+  @Column()
   delivery_date: Date
 
   @Column()
   status: boolean
+
+  @Column()
+  status_delivery: boolean
+
+  @Column()
+  status_paid: boolean
 
   @CreateDateColumn()
   created_at: Date

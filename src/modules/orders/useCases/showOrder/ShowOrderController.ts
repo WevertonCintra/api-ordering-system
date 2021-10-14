@@ -1,6 +1,5 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
-import { classToClass } from 'class-transformer'
 
 import { ShowOrderService } from './ShowOrderService'
 
@@ -12,7 +11,7 @@ class ShowOrderController {
 
     const order = await showOrderService.execute(id)
 
-    return response.json(classToClass(order))
+    return response.status(200).json(order)
   }
 }
 

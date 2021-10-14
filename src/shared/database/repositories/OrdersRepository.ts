@@ -11,38 +11,40 @@ class OrdersRepository implements IOrdersRepository {
     this.repository = getRepository(Order)
   }
 
-  async create({ client_id, delivery_date }: IOrderDTO): Promise<Order> {
-    const createOrder = this.repository.create({ client_id, delivery_date })
+  async create({ client_id, created_date, delivery_date }: IOrderDTO): Promise<Order> {
+    const createOrder = this.repository.create({ client_id, created_date, delivery_date })
 
     const order = await this.repository.save(createOrder)
 
     return order
   }
 
-  async findById(id: string): Promise<Order> {
+  async findByOrderId(id: string): Promise<Order> {
     const order = await this.repository.findOne(id)
 
     return order
   }
 
-  async findByOrderId(id: string): Promise<Order> {
-    const order = await this.repository.findOne(id, {
-      relations: ['client']
-    })
-
-    return order
-  }
-
-  async listByOrderForClient(client_id: string): Promise<Order[]> {
+  async listOrders(): Promise<Order[]> {
     const orders = await this.repository.find({
-      where: { client_id },
       relations: ['client']
     })
 
     return orders
   }
 
-  async list(): Promise<Order[]> {
+  async listOrdersByCreatedDate(): Promise<Order[]> {
+    const orders = await this.repository.find({
+      order: {
+        created_at: 'ASC'
+      },
+      relations: ['client']
+    })
+
+    return orders
+  }
+
+  async listOrdersByDeliveryDate(): Promise<Order[]> {
     const orders = await this.repository.find({
       order: {
         delivery_date: 'ASC'
@@ -53,8 +55,38 @@ class OrdersRepository implements IOrdersRepository {
     return orders
   }
 
-  async deleteById(id: string): Promise<void> {
+  async deleteByOrderId(id: string): Promise<void> {
     await this.repository.delete(id)
+  }
+
+  async countOrdersStatus(): Promise<number> {
+    const total = await this.repository.count({
+      where: {
+        status: false
+      }
+    }) 
+
+    return total
+  }
+
+  async countOrdersStatusDelivery(): Promise<number> {
+    const total = await this.repository.count({
+      where: {
+        status_delivery: false
+      }
+    }) 
+
+    return total
+  }
+
+  async countOrdersStatusPaid(): Promise<number> {
+    const total = await this.repository.count({
+      where: {
+        status_paid: false
+      }
+    }) 
+
+    return total
   }
 
   async save(order: Order): Promise<Order> {

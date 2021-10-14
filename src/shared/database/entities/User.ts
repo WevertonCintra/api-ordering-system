@@ -14,7 +14,6 @@ class User {
   @Column()
   password: string
 
-  @Exclude()
   @Column()
   manager: boolean
 

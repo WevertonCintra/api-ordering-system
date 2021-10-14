@@ -12,14 +12,14 @@ class CreateClientService {
     private clientsRepository: IClientsRepository
   ) {}
 
-  async execute({ name, phone, city }: IClientDTO): Promise<Client> {
-    const clientAlreadyExist = await this.clientsRepository.findByName(name)
+  async execute({ name, city }: IClientDTO): Promise<Client> {
+    const clientAlreadyExist = await this.clientsRepository.findClientByName(name)
 
     if (clientAlreadyExist) {
       throw new AppError('User already exists!')
     }
 
-    const client = await this.clientsRepository.create({ name, phone, city })
+    const client = await this.clientsRepository.create({ name, city })
 
     return client
   }

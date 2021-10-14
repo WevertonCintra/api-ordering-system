@@ -7,22 +7,25 @@
 3. caso prefira instale um container docker
 4. rode: docker run --name pgdb -e POSTGRES_PASSWORD=docker -p 5432:5432 -t -d postgres
 5. modifique o .env.example para .env
+6. consulte o arquivo insomnia.json e teste as rotas
 
 > tecnologias:
 
-1. express
-2. pg
-3. typeorm
-4. tsyringe
-5. reflect-metadata
-6. celebrate
-7. jsonwebtoken
-8. bcrypt
-9. class-transformer
-10. cors
-11. dotenv
-12. express-async-errors
-13. uuid
+1. typescript
+2. express
+3. pg
+4. typeorm
+5. tsyringe
+6. reflect-metadata
+7. celebrate
+8. jsonwebtoken
+9. bcrypt
+10. class-transformer
+11. cors
+12. dotenv
+13. express-async-errors
+14. uuid
+15. tsconfig-paths
 
 ## Execução 🚀
 

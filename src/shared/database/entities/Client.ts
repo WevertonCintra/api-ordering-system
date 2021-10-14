@@ -1,6 +1,5 @@
-import { Entity, PrimaryColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, JoinTable } from 'typeorm'
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 import { v4 as uuid } from 'uuid'
-import { Order } from './Order'
 
 @Entity('clients')
 class Client {
@@ -11,10 +10,7 @@ class Client {
   name: string
 
   @Column()
-  phone: string
-
-  @Column()
-  city: 'local' | 'another_city'
+  city: string
 
   @CreateDateColumn()
   created_at: Date

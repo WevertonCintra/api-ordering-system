@@ -17,10 +17,6 @@ export class CreateClient1631760825027 implements MigrationInterface {
             isUnique: true
           },
           {
-            name: 'phone',
-            type: 'varchar'
-          },
-          {
             name: 'city',
             type: 'varchar'
           },

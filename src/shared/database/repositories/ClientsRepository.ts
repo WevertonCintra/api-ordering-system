@@ -11,33 +11,33 @@ class ClientsRepository implements IClientsRepository {
     this.repository = getRepository(Client)
   }
 
-  async create({ name, phone, city }: IClientDTO): Promise<Client> {
-    const createClient = this.repository.create({ name, phone, city })
+  async create({ name, city }: IClientDTO): Promise<Client> {
+    const createClient = this.repository.create({ name, city })
 
     const client = await this.repository.save(createClient)
 
     return client
   }
 
-  async findByName(name: string): Promise<Client> {
+  async findClientByName(name: string): Promise<Client> {
     const client = await this.repository.findOne({ name })
   
     return client
   }
 
-  async findById(id: string): Promise<Client> {
+  async findClientById(id: string): Promise<Client> {
     const client = await this.repository.findOne(id)
 
     return client
   }
 
-  async list(): Promise<Client[]> {
+  async listClients(): Promise<Client[]> {
     const clients = await this.repository.find()
 
     return clients
   }
 
-  async deleteById(id: string): Promise<void> {
+  async deleteClientById(id: string): Promise<void> {
     await this.repository.delete(id)
   }
 

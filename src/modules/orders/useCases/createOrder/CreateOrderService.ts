@@ -16,14 +16,14 @@ class CreateOrderService {
     private clientsRepository: IClientsRepository
   ) {}
 
-  async execute({ client_id, delivery_date }: IOrderDTO): Promise<Order> {
-    const client = await this.clientsRepository.findById(client_id)
+  async execute({ client_id, created_date, delivery_date }: IOrderDTO): Promise<Order> {
+    const client = await this.clientsRepository.findClientById(client_id)
 
     if (!client) {
       throw new AppError('Client does not exists!');
     }
 
-    const order = await this.ordersRepository.create({ client_id, delivery_date })
+    const order = await this.ordersRepository.create({ client_id, created_date, delivery_date })
 
     return order
   }

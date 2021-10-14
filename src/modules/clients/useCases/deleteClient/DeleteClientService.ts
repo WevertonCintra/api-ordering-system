@@ -11,13 +11,13 @@ class DeleteClientService {
   ) {}
 
   async execute(id: string): Promise<void> {
-    const client = await this.clientsRepository.findById(id)
+    const client = await this.clientsRepository.findClientById(id)
 
     if (!client) {
       throw new AppError('Client does not exists!')
     }
 
-    await this.clientsRepository.deleteById(client.id)
+    await this.clientsRepository.deleteClientById(client.id)
   }
 }
 

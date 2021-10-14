@@ -3,11 +3,14 @@ import { Order } from '@shared/database/entities/Order'
 
 interface IOrdersRepository {
   create(data: IOrderDTO): Promise<Order>
-  findById(id: string): Promise<Order>
   findByOrderId(id: string): Promise<Order>
-  listByOrderForClient(client_id: string): Promise<Order[]>
-  list(): Promise<Order[]>
-  deleteById(id: string): Promise<void>
+  listOrders(): Promise<Order[]>
+  listOrdersByCreatedDate(): Promise<Order[]>
+  listOrdersByDeliveryDate(): Promise<Order[]>
+  deleteByOrderId(id: string): Promise<void>
+  countOrdersStatus(): Promise<number>
+  countOrdersStatusDelivery(): Promise<number>
+  countOrdersStatusPaid(): Promise<number>
   save(order: Order): Promise<Order>
 }
 

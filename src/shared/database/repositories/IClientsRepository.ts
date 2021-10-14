@@ -3,10 +3,10 @@ import { Client } from '@shared/database/entities/Client'
 
 interface IClientsRepository {
   create(data: IClientDTO): Promise<Client>
-  findByName(name: string): Promise<Client>
-  findById(id: string): Promise<Client>
-  list(): Promise<Client[]>
-  deleteById(id: string): Promise<void>
+  findClientByName(name: string): Promise<Client>
+  findClientById(id: string): Promise<Client>
+  listClients(): Promise<Client[]>
+  deleteClientById(id: string): Promise<void>
   save(client: Client): Promise<Client>
 }
 
